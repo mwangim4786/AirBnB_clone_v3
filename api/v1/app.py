@@ -2,7 +2,6 @@
 """
 Create flask app,register blueprint
 """
-
 from os import getenv
 from flask import Flask, jsonify
 from flask_cors import CORS
@@ -20,7 +19,7 @@ app.url_map.strict_slashes = False
 @app.teardown_appcontext
 def teardown_engine(exception):
     """
-
+    call storage.close()
     """
     storage.close()
 
@@ -28,7 +27,7 @@ def teardown_engine(exception):
 @app.errorhandler(404)
 def not_found(error):
     """
-
+    Prepare default 404 response error
     """
     response = {"error": "Not found"}
     return jsonify(response), 404
