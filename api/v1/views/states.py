@@ -24,7 +24,6 @@ def get_state(state_id):
     Get state object by id
     """
     state = storage.get(State, state_id)
-
     if state:
         return jsonify(state.to_dict())
     else:
